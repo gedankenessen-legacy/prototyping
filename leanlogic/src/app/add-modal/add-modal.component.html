@@ -1,0 +1,25 @@
+<form nz-form (ngSubmit)="this.submit()" [formGroup]="inputs">
+  <nz-form-item>
+	<nz-form-control>
+	  <nz-input-group>
+		<input nz-input formControlName="surname" placeholder="Surname"/>
+	  </nz-input-group>
+	</nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+	<nz-form-control>
+	  <nz-input-group>
+		<input nz-input formControlName="lastname" placeholder="Lastname" />
+	  </nz-input-group>
+	</nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+	<nz-form-control>
+	  <nz-input-group>
+		<nz-date-picker formControlName="birthday"></nz-date-picker>
+	  </nz-input-group>
+	</nz-form-control>
+  </nz-form-item>
+</form>
