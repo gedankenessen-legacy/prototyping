@@ -1,2 +1,5 @@
 .DS_Store
 node_modules
+TicketNodes/TicketNodes/obj/
+TicketNodes/TicketNodes/bin/
+TicketNodes/.idea/
