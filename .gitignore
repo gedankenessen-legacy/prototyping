@@ -3,3 +3,5 @@ node_modules
 TicketNodes/TicketNodes/obj/
 TicketNodes/TicketNodes/bin/
 TicketNodes/.idea/
+TicketNodes/packages
+TicketNodes/TicketNodes.sln.DotSettings.user
