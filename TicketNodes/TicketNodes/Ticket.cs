@@ -20,11 +20,11 @@ namespace TicketNodes
             get
             {
                 var cur = this;
-                while (cur.Parent != null)
+                do
                 {
                     if (cur._predecessor != null) return cur._predecessor;
                     cur = cur.Parent;
-                }
+                } while (cur != null);
 
                 return null;
             }
