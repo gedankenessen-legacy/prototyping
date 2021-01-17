@@ -101,6 +101,7 @@ namespace TicketNodes
             return other.GetChildrenRecursive().FirstOrDefault(child => child.Equals(this)) != null;
         }
 
+        //TODO CanAddPredecessor sollte eine Begründung (in form einer exception) zurückgeben, warum es fehlgeschlagen ist
         private bool CanAddPredecessor(Ticket other)
         {
             //Falls A Ein Ober-/Unter-ticket von B ist 
@@ -108,6 +109,10 @@ namespace TicketNodes
             
             //Falls A schon einen Vorgänger hat
             if (Predecessor != null) return false;
+
+            //Gibt false zurück falls ein Unterticket schon einen Vorgänger hat. Alle Untertickets müssen nämlich den gleichen Vorgänger wie das Oberticket haben
+            if (GetChildrenRecursive().FirstOrDefault(child => child.Predecessor != null) != null)
+                return false;
             
             Queue<Ticket> tickets = new Queue<Ticket>();
             //fügt sich selber und alle Kinder hinzu. Die Kinder werden hinzugefügt, da der Vorgänger eines Obertickets der Vorgänger aller 
