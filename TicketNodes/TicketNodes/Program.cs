@@ -21,13 +21,6 @@ namespace TicketNodes
              */
             
             var commandUtils = new CommandUtils();
-            commandUtils.ExecuteCommand("create 2");
-            commandUtils.ExecuteCommand("ac 7 2");
-            commandUtils.ExecuteCommand("ac 4 2");
-            
-            commandUtils.ExecuteCommand("create 3");
-            commandUtils.ExecuteCommand("create 5");
-            commandUtils.ExecuteCommand("ac 6 5");
 
             commandUtils.ExecuteCommand("help");
             while (true)

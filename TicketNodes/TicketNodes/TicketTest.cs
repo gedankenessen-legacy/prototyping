@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace TicketNodes
 {
     [TestFixture]
-    public class Tests
+    public class TicketTest
     {
         [Test]
         public void Case01()
@@ -114,7 +114,7 @@ namespace TicketNodes
             var ticket8 = ticket7.AddChild("8");
             Assert.IsTrue(ticket1.AddPredecessor(ticket6), "1 nachfolger von 6");
             Assert.IsTrue(ticket5.AddPredecessor(ticket8), "5 nachfolger von 8");
-            Assert.IsFalse(ticket1.AddPredecessor(ticket7), "1 nachfolger von 7");
+            Assert.IsTrue(ticket1.AddPredecessor(ticket7), "1 nachfolger von 7");
         }
 
         [Test]
@@ -131,7 +131,9 @@ namespace TicketNodes
             var ticket8 = ticket7.AddChild("8");
             Assert.IsTrue(ticket1.AddPredecessor(ticket6), "1 nachfolger von 6");
             Assert.IsTrue(ticket5.AddPredecessor(ticket8), "5 nachfolger von 8");
-            Assert.IsFalse(ticket3.AddPredecessor(ticket7), "3 nachfolger von 7");
+            Assert.IsTrue(ticket3.AddPredecessor(ticket7), "3 nachfolger von 7");
+            Assert.IsTrue(ticket1.AddPredecessor(ticket7), "1 nachfolger von 7");
+            Assert.IsFalse(ticket7.AddPredecessor(ticket5), "7 nachfolger von 5");
         }
 
         [Test]
