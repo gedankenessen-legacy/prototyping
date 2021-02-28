@@ -5,3 +5,5 @@ TicketNodes/TicketNodes/bin/
 TicketNodes/.idea/
 TicketNodes/packages
 TicketNodes/TicketNodes.sln.DotSettings.user
+/TicketDeadline/TicketDeadline/obj
+/TicketDeadline/TicketDeadline/bin/
