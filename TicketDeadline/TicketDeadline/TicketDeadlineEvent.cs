@@ -20,14 +20,16 @@ namespace ConsoleApp1 {
 
             lock (_runningDeadlinesLock) {
                 _runningDeadlines.TryGetValue(TicketId, out oldCanceller);
-
-                // Get a canceller from the EventExecutor and update the index
-                _runningDeadlines[TicketId] = executor.GetEventCanceller();
             }
 
             // old canceller cannot be awaited in the lock
             if (oldCanceller != null) {
                 await oldCanceller.Cancel();
+            }
+
+            lock (_runningDeadlinesLock) {
+                // Get a canceller from the EventExecutor and update the index
+                _runningDeadlines[TicketId] = executor.GetEventCanceller();
             }
 
             Console.WriteLine($"Set       Deadline of Ticket {TicketId} to  {Time}");
@@ -50,6 +52,11 @@ namespace ConsoleApp1 {
         }
 
         public Task OnCancelled() {
+            // This deadline is not running anymore, clean up from dictionary
+            lock (_runningDeadlinesLock) {
+                _runningDeadlines.Remove(TicketId);
+            }
+
             Console.WriteLine($"Cancelled Deadline of Ticket {TicketId} was {Time}");
             return Task.CompletedTask;
         }
